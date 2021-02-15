@@ -23,6 +23,11 @@ namespace AmirKouretchianWeb.Controllers
             return View();
         }
 
+        public IActionResult ReactTODOs()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
