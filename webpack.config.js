@@ -13,6 +13,16 @@ module.exports = {
                 options: { presets: ["@babel/env"] }
             },
             {
+                // NOTE: loaders go bottom-to-top, right-to-left.
+                // so for this one, webpack will use css-loader first,
+                // then style-loader for files ending w/ .css.
+                /*
+                From https://webpack.js.org/concepts/loaders/:
+                Loaders can be chained. Each loader in the chain applies transformations to the processed resource. 
+                A chain is executed in reverse order. The first loader passes its result (resource with applied 
+                transformations) to the next one, and so forth. Finally, webpack expects JavaScript to be returned
+                by the last loader in the chain.
+                 */
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
             }
