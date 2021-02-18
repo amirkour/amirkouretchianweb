@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-    entry: "./Spa/React/Todos/index.js",
+    entry: "/Spa/React/Todos/index.js",
     mode: "development",
     module: {
         rules: [
@@ -10,7 +10,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: "babel-loader",
-                options: { presets: ["@babel/env"] }
+                options: { presets: ["@babel/env", "@babel/preset-react"] }
             },
             {
                 // NOTE: loaders go bottom-to-top, right-to-left.
@@ -34,11 +34,17 @@ module.exports = {
         publicPath: "/js/",
         filename: "bundle.js"
     },
-    devServer: {
-        contentBase: path.join(__dirname, "public/"),
-        port: 3000,
-        publicPath: "http://localhost:3000/js/",
-        hotOnly: true
-    },
+
+    // 
+    // NOT USING THIS, cuz asp.net core is serving up
+    // my web site, and i'll use webpack --watch to watch
+    // for js changes
+    //
+    // devServer: {
+    //     contentBase: path.join(__dirname, "public/"),
+    //     port: 3000,
+    //     publicPath: "http://localhost:3000/js/",
+    //     hotOnly: true
+    // },
     plugins: [new webpack.HotModuleReplacementPlugin()]
 };
