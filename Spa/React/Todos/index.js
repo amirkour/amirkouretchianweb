@@ -14,18 +14,22 @@ function Todo(props){
                         onChange={() => props.onChange(props.id)}
                         disabled={props.disabled} />
                     <label className="form-check-label" htmlFor={props.id}>{props.value}</label>
+                    <button type="button" className="close" aria-label="Close" onClick={() => props.onDeleteClick(props.id,props.disabled)}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             </div>
         </div>
     );
 }
 
-class App extends Component {
+class TodoApp extends Component {
     constructor(props){
         super(props);
         this.state = {
             todos: [],
-            done: []
+            done: [],
+            nextId: 0
         };
     }
     newTodo(newId,checked,value,disabled){
@@ -35,8 +39,21 @@ class App extends Component {
                 checked={checked}
                 value={value}
                 onChange={(id) => this.onChange(id)}
-                disabled={disabled} />
+                disabled={disabled}
+                onDeleteClick={(id,disabled) => this.onDeleteClick(id,disabled)} />
         );
+    }
+    onDeleteClick(id, disabled){
+        let list = [];
+        const listToRemoveFrom = disabled ? this.state.done : this.state.todos;
+        listToRemoveFrom.forEach((todo) => {
+            if (todo.props.id !== id) list.push(todo);
+        });
+
+        if(disabled)
+            this.setState({done:list});
+        else
+            this.setState({todos:list});
     }
     onChange(id){
         let completed;
@@ -66,8 +83,15 @@ class App extends Component {
 
         let todos = this.state.todos.slice();
         const newId = this.state.todos.length + this.state.done.length;
-        todos.unshift(this.newTodo(newId, false, e.target.value, false));
-        this.setState({todos: todos});
+
+        // TODO - setting the ID of a todo will be done by DB, but we'll fake it here for now
+        todos.unshift(this.newTodo(this.state.nextId, false, e.target.value, false));
+        this.setState(function(state,props){
+            return {
+                todos: todos,
+                nextId: state.nextId+1
+            };
+        })
 
         e.target.value = "";
     }
@@ -94,6 +118,4 @@ class App extends Component {
     }
 }
 
-// export default App;
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<TodoApp />, document.getElementById("root"));
