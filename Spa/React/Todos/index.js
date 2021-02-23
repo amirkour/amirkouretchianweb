@@ -50,6 +50,8 @@ class TodoApp extends Component {
             this.setState({done:list});
         else
             this.setState({todos:list});
+
+        this.inputBox.focus();
     }
     onChange(id){
         let completed;
