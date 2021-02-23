@@ -4,22 +4,18 @@ import { hot } from "react-hot-loader";
 
 function Todo(props){
     return (
-        <div className="row justify-content-center">
-            <div className="col-lg-6">
-                <div className="form-check pt-3">
-                    <input className="form-check-input" 
-                        type="checkbox" 
-                        id={props.id} 
-                        checked={props.checked} 
-                        onChange={() => props.onChange(props.id)}
-                        disabled={props.disabled} />
-                    <label className="form-check-label" htmlFor={props.id}>{props.value}</label>
-                    <button type="button" className="close" aria-label="Close" onClick={() => props.onDeleteClick(props.id,props.disabled)}>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+        <li className="list-group-item">
+            <input className="form-check-input" 
+                type="checkbox" 
+                id={props.id} 
+                checked={props.checked} 
+                onChange={() => props.onChange(props.id)}
+                disabled={props.disabled} />
+            <label className="form-check-label" htmlFor={props.id}>{props.value}</label>
+            <button type="button" className="close" aria-label="Close" onClick={() => props.onDeleteClick(props.id,props.disabled)}>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </li>
     );
 }
 
@@ -99,7 +95,7 @@ class TodoApp extends Component {
     render() {
         return (
             <div>
-                <div className="row justify-content-center">
+                <div className="row justify-content-center mb-2">
                     <div className="col-lg-6">
                         <input autoFocus 
                                type="text" 
@@ -110,9 +106,21 @@ class TodoApp extends Component {
                                ref={(input) => this.inputBox = input} />
                     </div>
                 </div>
-                {this.state.todos}
+                <div className="row justify-content-center">
+                    <div className="col-lg-6">
+                        <ul className="list-group list-group-flush">
+                            {this.state.todos}
+                        </ul>
+                    </div>
+                </div>
                 <hr/>
-                {this.state.done}
+                <div className="row justify-content-center">
+                    <div className="col-lg-6">
+                        <ul className="list-group list-group-flush">
+                            {this.state.done}
+                        </ul>
+                    </div>
+                </div>
             </div>
         );
     }
