@@ -11,6 +11,7 @@
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.12.13",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.0.2",
     "css-loader": "^1.0.1",
     "jest": "^26.6.3",
@@ -22,7 +23,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "webpack --watch --mode development",
     "prod": "webpack --mode production"
   },
@@ -30,10 +31,10 @@
     "type": "git",
     "url": "git+https://github.com/amirkour/AmirKouretchianWeb.git"
   },
-  "author": "",
+  "author": "Amir Kouretchian",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/amirkour/AmirKouretchianWeb/issues"
   },
-  "homepage": "https://github.com/amirkour/AmirKouretchianWeb#readme"
+  "homepage": "https://amir-kouretchian.azurewebsites.net/"
 }
