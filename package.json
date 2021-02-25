@@ -4,24 +4,23 @@
   "description": "My website!?",
   "main": "index.js",
   "dependencies": {
-    "react-hot-loader": "^4.13.0"
+    "react-hot-loader": "^4.13.0",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.0",
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
     "@babel/preset-react": "^7.12.13",
     "babel-jest": "^26.6.3",
-    "babel-loader": "^8.0.2",
-    "css-loader": "^1.0.1",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.9.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "jest": "^26.6.3",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-test-renderer": "^17.0.1",
-    "style-loader": "^0.23.0",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "scripts": {
     "test": "jest",

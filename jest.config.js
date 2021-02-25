@@ -3,6 +3,10 @@
  * https://jestjs.io/docs/en/configuration.html
  */
 
+// Uncomment these to see what jest is using for defaults at runtime
+// const { defaults } = require('jest-config');
+// console.log(defaults);
+
 module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -31,7 +35,7 @@ module.exports = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -72,12 +76,12 @@ module.exports = {
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
-  //   "js",
-  //   "json",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "node"
+    // "js",
+    // "json",
+    // "jsx",
+    // "ts",
+    // "tsx",
+    // "node"
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
@@ -137,7 +141,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
