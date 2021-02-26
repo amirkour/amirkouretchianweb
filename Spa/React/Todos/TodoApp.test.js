@@ -1,19 +1,29 @@
 import React from 'react';
-import { configure, shallow, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import TodoApp from './TodoApp';
-
-configure({ adapter: new Adapter() });
+import { render, fireEvent, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 describe('TodoApp', () => {
 
-    test('has a textbox w/ focus', () => {
-        const wrapper = mount(<TodoApp />);
+    test('has a textbox', () => {
+        render(<TodoApp />);
+        expect(screen.getByRole('textbox', {name: /default/i})).toBeDefined();
+    });
 
-        // NOTE: whether I 'autofocus' and/or call focus() on this textbox
-        // in the TodoApp component, it doesn't matter.  The following selector
-        // is always returning
-        expect(wrapper.find('input:focus')).toBeDefined();
-    })
+    test('can add a todo', () => {
+        render(<TodoApp />);
+        const textbox = screen.getByRole('textbox', { name: /default/i })
+        const text = "wash the car";
+
+        // first, make sure this TODO doesn't exist
+        expect(screen.queryByText(text)).toBeNull();
+
+        // then add it in
+        userEvent.type(textbox, text);
+        fireEvent.keyPress(textbox, {charCode:13});
+
+        // and make sure it's there
+        expect(screen.queryByText(text)).not.toBeNull();
+    });
 
 });
