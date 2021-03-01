@@ -10,6 +10,11 @@ describe('TodoApp', () => {
         expect(screen.getByRole('textbox', {name: /default/i})).toBeDefined();
     });
 
+    test('textbox has focus on render', () => {
+        render(<TodoApp />);
+        expect(screen.getByRole('textbox', { name: /default/i })).toBe(document.activeElement);
+    });
+
     test('can add a todo', () => {
         render(<TodoApp />);
         const textbox = screen.getByRole('textbox', { name: /default/i })

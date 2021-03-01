@@ -6,11 +6,11 @@ export function Todo(props) {
         <li className="list-group-item">
             <input className="form-check-input"
                 type="checkbox"
-                id={props.id}
+                id={`checkbox-${props.id}`}
                 checked={props.checked}
                 onChange={() => props.onChange(props.id)}
                 disabled={props.disabled} />
-            <label className="form-check-label" htmlFor={props.id}>{props.value}</label>
+            <label className="form-check-label" htmlFor={`checkbox-${props.id}`}>{props.value}</label>
             <button type="button" className="close" aria-label="Close" onClick={() => props.onDeleteClick(props.id, props.disabled)}>
                 <span aria-hidden="true">&times;</span>
             </button>
