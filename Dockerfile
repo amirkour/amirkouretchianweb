@@ -18,6 +18,7 @@ FROM node:14.15.5-alpine AS spas
 WORKDIR /src
 COPY package.json .
 COPY webpack.config.js .
+COPY .babelrc .
 COPY Spa/ Spa/
 RUN npm install
 RUN npm run prod
